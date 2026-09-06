@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
 import { Link } from "react-router-dom";
-import { TMDB_TOKEN } from "../../config";
 
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
@@ -12,7 +11,7 @@ const TitleCards = ({ title, category }) => {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization: "Bearer " + TMDB_TOKEN,
+      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
     },
   };
 
@@ -93,7 +92,6 @@ const TitleCards = ({ title, category }) => {
               key={card.id || index}
             >
               <img src={imageUrl} alt={movieTitle} />
-
               <p>{movieTitle}</p>
             </Link>
           );
