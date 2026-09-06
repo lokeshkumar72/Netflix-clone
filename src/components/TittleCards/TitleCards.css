@@ -1,58 +1,177 @@
-.title-cards{
-    margin-top: 50px;
-    margin-bottom: 50px;
+.title-cards {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 100%;
 }
-.title-cards h2{
-    margin-bottom: 8px;
+
+.title-cards h2 {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600;
 }
-.card-list{
-    display: flex;
+
+/* =========================
+   MOVIE CARD LIST
+========================= */
+
+.card-list {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding-bottom: 5px;
+  scrollbar-width: none;
+}
+
+.card-list::-webkit-scrollbar {
+  display: none;
+}
+
+/* =========================
+   CARD
+========================= */
+
+.card-list .card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 240px;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.card-list img {
+  display: block;
+  width: 100%;
+  height: 135px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: transform 0.3s ease;
+}
+
+/* Image hover effect */
+
+.card-list .card:hover img {
+  transform: scale(1.05);
+}
+
+/* Movie title */
+
+.card-list .card p {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  padding: 25px 10px 8px;
+
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+  .title-cards {
+    margin-top: 30px;
+    margin-bottom: 25px;
+  }
+
+  .title-cards h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .card-list {
     gap: 10px;
-    overflow-x: scroll;
+  }
+
+  .card-list .card {
+    width: 200px;
+  }
+
+  .card-list img {
+    height: 112px;
+  }
+
+  .card-list .card p {
+    font-size: 12px;
+    padding: 22px 8px 6px;
+  }
 }
-.card-list::-webkit-scrollbar{
-    display: none;
-}
-.card-list img{
-    width: 240px;
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+  .title-cards {
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+
+  .title-cards h2 {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .card-list {
+    gap: 8px;
+    padding-right: 10px;
+  }
+
+  .card-list .card {
+    width: 165px;
+  }
+
+  .card-list img {
+    height: 93px;
     border-radius: 4px;
-    cursor: pointer;
-}
-.card-list .card{
-    position: relative;
-}
-.card-list .card p{
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    text-decoration: none;
-    color: #fff;
-}
-@media (max-width:800px){
-    .title-cards{
-        margin-top: 20px;
-        margin-bottom: 0;
-    }
-    .title-cards h2{
-        font-size: 20px;
+  }
 
-    }
-    .card-list img{
-        width: 200px;
-    }
-    .card-list p{
-        font-size: 12px;
-    }
+  .card-list .card p {
+    font-size: 10px;
+    padding: 20px 7px 5px;
+  }
 }
-@media (max-width:500px){
-    .title-cards h2{
-        font-size: 15px;
-    }
-    .card-list img{
-        width: 165px;
 
-    }
-    .card-list p{
-        font-size: 10px;
-    }
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+  .title-cards {
+    margin-top: 20px;
+  }
+
+  .title-cards h2 {
+    font-size: 15px;
+  }
+
+  .card-list {
+    gap: 7px;
+  }
+
+  .card-list .card {
+    width: 145px;
+  }
+
+  .card-list img {
+    height: 82px;
+  }
+
+  .card-list .card p {
+    font-size: 9px;
+  }
 }

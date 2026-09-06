@@ -4,14 +4,52 @@
   box-sizing: border-box;
 }
 
-body {
-  background: black;
-  color: white;
-  font-family: 'poppins';
+html {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
 }
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================
+   TABLET
+========================= */
 
 @media (max-width: 768px) {
   body {
-    padding: 0 10px; /* Add padding for smaller screens */
+    font-size: 14px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
   }
 }

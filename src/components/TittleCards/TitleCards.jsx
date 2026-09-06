@@ -1,68 +1,106 @@
-import React, { useRef, useEffect, useState } from 'react'
-import './TitleCards.css'
-import cards_data from '../../assets/cards/Cards_data'
-import { Link } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from "react";
+import "./TitleCards.css";
+import cards_data from "../../assets/cards/Cards_data";
+import { Link } from "react-router-dom";
+import { TMDB_TOKEN } from "../../config";
 
-
-
-
-const TitleCards = ({title, category}) => {
-
-const[apiData, setApiData]= useState([]);
-
-  const cardsRef = useRef();
+const TitleCards = ({ title, category }) => {
+  const [apiData, setApiData] = useState([]);
+  const cardsRef = useRef(null);
 
   const options = {
-    method: 'GET',
+    method: "GET",
     headers: {
-      accept: 'application/json',
-     Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI0ODE5YTY5N2VlMTllMzlkMzdhZmZlYmQ1ZDg1NjcxMiIsIm5iZiI6MTc0NDE5MzgzMS40NjMsInN1YiI6IjY3ZjY0OTI3ZGRmOTE5NDM4N2RhM2Y1ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.9A9aRdQkOx0p9YyBTM1o77NGKuSyFLu_D666dSEl16o'
-    }
+      accept: "application/json",
+      Authorization: "Bearer " + TMDB_TOKEN,
+    },
   };
-  
- 
 
   const handleWheel = (event) => {
     event.preventDefault();
-    const scrollSpeed = 5; // Base speed multiplier
-    const acceleration = 1.1; // Acceleration factor
+
+    const scrollSpeed = 5;
+    const acceleration = 1.1;
     const velocity = Math.abs(event.deltaY) * acceleration;
     const scrollAmount = event.deltaY * (scrollSpeed + velocity);
-    
-    cardsRef.current.scrollLeft += scrollAmount;
-  }
 
-  useEffect(()=>{
-    fetch(`https://api.themoviedb.org/3/movie/${category?category:"now_playing"}?language=en-US&page=1`, options)
-    .then(res => res.json())
-    .then(res => setApiData(res.results))
-    .catch(err => {
-      console.error(err);
-      // Fallback to local data if API fails
-      setApiData(cards_data);
-    });
+    if (cardsRef.current) {
+      cardsRef.current.scrollLeft += scrollAmount;
+    }
+  };
+
+  useEffect(() => {
+    const fetchMovies = async () => {
+      try {
+        const response = await fetch(
+          `https://api.themoviedb.org/3/movie/${
+            category || "now_playing"
+          }?language=en-US&page=1`,
+          options,
+        );
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch movies");
+        }
+
+        const data = await response.json();
+
+        if (data.results && data.results.length > 0) {
+          setApiData(data.results);
+        } else {
+          setApiData(cards_data);
+        }
+      } catch (error) {
+        console.error("TMDB API Error:", error);
+        setApiData(cards_data);
+      }
+    };
+
+    fetchMovies();
 
     const currentRef = cardsRef.current;
-    currentRef.addEventListener('wheel', handleWheel);
-    
+
+    if (currentRef) {
+      currentRef.addEventListener("wheel", handleWheel, {
+        passive: false,
+      });
+    }
+
     return () => {
-      currentRef.removeEventListener('wheel', handleWheel);
+      if (currentRef) {
+        currentRef.removeEventListener("wheel", handleWheel);
+      }
     };
-  },[category])
+  }, [category]);
 
   return (
-    <div className='title-cards'>
-      <h2>{title?title:"Popular on Netflix"}</h2>
+    <div className="title-cards">
+      <h2>{title || "Popular on Netflix"}</h2>
+
       <div className="card-list" ref={cardsRef}>
-        {apiData.map((card,index)=>{
-          return <Link to={`/player/${card.id}`} className="card" key={index}>
-            <img src={`https://image.tmdb.org/t/p/w500`+card.backdrop_path} alt="" />
-            <p>{card.original_title}</p>
-         </Link>
+        {apiData.map((card, index) => {
+          const imageUrl = card.backdrop_path
+            ? `https://image.tmdb.org/t/p/w500${card.backdrop_path}`
+            : card.image;
+
+          const movieTitle =
+            card.original_title || card.title || card.name || "Movie";
+
+          return (
+            <Link
+              to={`/player/${card.id}`}
+              className="card"
+              key={card.id || index}
+            >
+              <img src={imageUrl} alt={movieTitle} />
+
+              <p>{movieTitle}</p>
+            </Link>
+          );
         })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TitleCards
+export default TitleCards;
