@@ -18,13 +18,13 @@ This project recreates the core experience of a movie streaming platform, allowi
 
 ![Home Page](./screenshots/homepage%20screenshot.png)
 
-### 🔐 SignIn Page
+### 🔐 Sign In Page
 
-![SignIn Page](./screenshots/login%20screenshot.png)
+![Sign In Page](./screenshots/login%20screenshot.png)
 
-### 📝 SignUp Page
+### 📝 Sign Up Page
 
-![SignUp Page](./screenshots/signup%20page%20screenshot.png)
+![Sign Up Page](./screenshots/signup%20page%20screenshot.png)
 
 ---
 
