@@ -30,20 +30,20 @@ This project recreates the core experience of a movie streaming platform, allowi
 
 ## ✨ Features
 
-* 🎬 Netflix-inspired user interface
-* 🏠 Dynamic home page
-* 🔎 Movie search functionality
-* 🎞️ Browse movies and TV shows
-* 📄 Movie details
-* ▶️ Watch movie trailers
-* 🔐 Firebase Authentication
-* 👤 User registration and login
-* 🚪 Secure logout functionality
-* 📱 Responsive design
-* ⚡ Fast loading with Vite
-* 🌐 TMDB API integration
-* 🧭 Client-side routing
-* 🎨 Modern and responsive UI
+- 🎬 Netflix-inspired user interface
+- 🏠 Dynamic home page
+- 🔎 Movie search functionality
+- 🎞️ Browse movies and TV shows
+- 📄 Movie details
+- ▶️ Watch movie trailers
+- 🔐 Firebase Authentication
+- 👤 User registration and login
+- 🚪 Secure logout functionality
+- 📱 Responsive design
+- ⚡ Fast loading with Vite
+- 🌐 TMDB API integration
+- 🧭 Client-side routing
+- 🎨 Modern and responsive UI
 
 ---
 
@@ -51,26 +51,26 @@ This project recreates the core experience of a movie streaming platform, allowi
 
 ### Frontend
 
-* **React.js**
-* **JavaScript (ES6+)**
-* **HTML5**
-* **CSS3**
-* **Vite**
-* **React Router**
+- **React.js**
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
+- **Vite**
+- **React Router**
 
 ### APIs & Services
 
-* **TMDB API** — Movie and TV show data
-* **Firebase Authentication** — User authentication
-* **Firebase** — Backend services
+- **TMDB API** — Movie and TV show data
+- **Firebase Authentication** — User authentication
+- **Firebase** — Backend services
 
 ### Tools
 
-* **Git**
-* **GitHub**
-* **VS Code**
-* **npm**
-* **Vercel**
+- **Git**
+- **GitHub**
+- **VS Code**
+- **npm**
+- **Vercel**
 
 ---
 
@@ -173,11 +173,11 @@ Firebase Authentication is used to handle user authentication.
 
 ### Authentication Features
 
-* User Sign Up
-* User Login
-* User Logout
-* Authentication state management
-* Protected user functionality
+- User Sign Up
+- User Login
+- User Logout
+- Authentication state management
+- Protected user functionality
 
 Firebase makes it possible to securely manage user authentication without building a custom authentication backend.
 
@@ -189,14 +189,14 @@ The **TMDB API** is used to retrieve movie and TV show information.
 
 The application uses TMDB data for:
 
-* Movie posters
-* Backdrop images
-* Movie titles
-* Movie descriptions
-* Ratings
-* Release information
-* Trailers
-* Movie videos
+- Movie posters
+- Backdrop images
+- Movie titles
+- Movie descriptions
+- Ratings
+- Release information
+- Trailers
+- Movie videos
 
 > This project is for educational and portfolio purposes and is not affiliated with Netflix.
 
@@ -234,9 +234,9 @@ Home Page
 
 The application is designed to provide a consistent experience across:
 
-* 💻 Desktop
-* 📱 Mobile
-* 📲 Tablet
+- 💻 Desktop
+- 📱 Mobile
+- 📲 Tablet
 
 The UI adapts to different screen sizes for better usability and accessibility.
 
@@ -246,17 +246,17 @@ The UI adapts to different screen sizes for better usability and accessibility.
 
 This project helped me practice several important React concepts:
 
-* Functional Components
-* React Hooks
-* `useState`
-* `useEffect`
-* Props
-* Component Reusability
-* Conditional Rendering
-* API Integration
-* Asynchronous JavaScript
-* React Router
-* Environment Variables
+- Functional Components
+- React Hooks
+- `useState`
+- `useEffect`
+- Props
+- Component Reusability
+- Conditional Rendering
+- API Integration
+- Asynchronous JavaScript
+- React Router
+- Environment Variables
 
 ---
 
@@ -292,17 +292,17 @@ This project helped me practice several important React concepts:
 
 The following features can be added in future versions:
 
-* ❤️ Add to Watchlist
-* ⭐ Personalized recommendations
-* 👤 User profile page
-* 🎥 Continue Watching
-* 📜 Watch History
-* 🔔 Notifications
-* 🌙 Dark/Light theme options
-* 🎬 Improved video player
-* 🔍 Advanced movie filtering
-* 📱 Progressive Web App (PWA)
-* 🎯 Personalized content based on user activity
+- ❤️ Add to Watchlist
+- ⭐ Personalized recommendations
+- 👤 User profile page
+- 🎥 Continue Watching
+- 📜 Watch History
+- 🔔 Notifications
+- 🌙 Dark/Light theme options
+- 🎬 Improved video player
+- 🔍 Advanced movie filtering
+- 📱 Progressive Web App (PWA)
+- 🎯 Personalized content based on user activity
 
 ---
 
@@ -325,16 +325,16 @@ The following features can be added in future versions:
 
 By building this project, I gained practical experience with:
 
-* Building real-world React applications
-* Consuming REST APIs
-* Firebase Authentication
-* React component architecture
-* Client-side routing
-* Responsive web development
-* Environment variable management
-* Git and GitHub workflows
-* Deploying applications with Vercel
-* Debugging frontend issues
+- Building real-world React applications
+- Consuming REST APIs
+- Firebase Authentication
+- React component architecture
+- Client-side routing
+- Responsive web development
+- Environment variable management
+- Git and GitHub workflows
+- Deploying applications with Vercel
+- Debugging frontend issues
 
 ---
 
@@ -354,8 +354,8 @@ I enjoy building modern, responsive web applications and learning new technologi
 
 ### 🔗 Connect With Me
 
-* 🐙 **GitHub:** [github.com/lokeshkumar72](https://github.com/lokeshkumar72)
-* 💼 **LinkedIn:**[linkedin.com/lokesh-kumar-singh-] https://www.linkedin.com/in/lokesh-kumar-singh-
+- 🐙 **GitHub:** [github.com/lokeshkumar72](https://github.com/lokeshkumar72)
+- 💼 **LinkedIn:**[linkedin.com/lokesh-kumar-singh-] https://www.linkedin.com/in/lokesh-kumar-singh-
 
 ---
 
@@ -374,4 +374,3 @@ This project is created **for educational and portfolio purposes only**.
 Netflix is a registered trademark of Netflix, Inc. This project is not affiliated with, sponsored by, or endorsed by Netflix.
 
 Movie and TV show data is provided through the TMDB API.
-
