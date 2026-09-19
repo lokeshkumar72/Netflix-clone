@@ -3,17 +3,17 @@ import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
 import { Link } from "react-router-dom";
 
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
+  },
+};
+
 const TitleCards = ({ title, category }) => {
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef(null);
-
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
-    },
-  };
 
   const handleWheel = (event) => {
     event.preventDefault();
@@ -35,7 +35,7 @@ const TitleCards = ({ title, category }) => {
           `https://api.themoviedb.org/3/movie/${
             category || "now_playing"
           }?language=en-US&page=1`,
-          options,
+          options
         );
 
         if (!response.ok) {

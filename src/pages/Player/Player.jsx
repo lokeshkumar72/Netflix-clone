@@ -3,6 +3,14 @@ import "./Player.css";
 import { useNavigate, useParams } from "react-router-dom";
 import back_arrow_icon from "../../assets/back_arrow_icon.png";
 
+const options = {
+  method: "GET",
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
+  },
+};
+
 const Player = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -14,13 +22,6 @@ const Player = () => {
     type: "",
   });
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
-    },
-  };
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,

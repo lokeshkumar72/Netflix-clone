@@ -5,7 +5,7 @@ import Login from './pages/Login/Login'
 import Player from './pages/Player/Player'
 import { onAuthStateChanged } from 'firebase/auth'
 import { auth } from './firebase'
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 const App = () => {
 
   const navigate =useNavigate();
@@ -20,7 +20,7 @@ onAuthStateChanged(auth, async(user)=>{
     navigate('/login')
   }
 })
-},[])
+},[navigate])
 
   return (
     <div>
