@@ -286,9 +286,20 @@
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
+.google-btn.mail-btn {
+  background: rgba(26, 115, 255, 0.1);
+  border-color: rgba(26, 115, 255, 0.3);
+}
+
+.google-btn.mail-btn:hover {
+  background: rgba(26, 115, 255, 0.15);
+}
+
 .google-icon {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
+  flex-shrink: 0;
 }
 
 .google-signin-note {

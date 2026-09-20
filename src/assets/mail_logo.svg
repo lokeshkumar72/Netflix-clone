@@ -1,3 +1,10 @@
 <svg width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <path fill="#000000" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2l-8 5-8-5V6l8 5 8-5z"/>
+  <defs>
+    <linearGradient id="mailGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a73ff"/>
+      <stop offset="100%" stop-color="#00c9ff"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#mailGradient)" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V7.5l8 5 8-5V18zm0-14.5a1.5 1.5 0 0 1 1.5 1.5v12a1.5 1.5 0 0 1-1.5 1.5H4a1.5 1.5 0 0 1-1.5-1.5V6a1.5 1.5 0 0 1 1.5-1.5h16z"/>
+  <path fill="url(#mailGradient)" d="M4 7.5l8 5 8-5H4z" opacity="0.6"/>
 </svg>

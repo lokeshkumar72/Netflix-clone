@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Navbar.css'
 import logo from '../../assets/movieflix_logo.svg'
 import search_icon from '../../assets/search_icon.svg'
@@ -8,7 +7,7 @@ import profile_img from'../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { logout } from '../../firebase'
 
-const Navbar = () => {
+const Navbar = ({ setActiveCategory }) => {
   const navRef= useRef();
   useEffect(()=>{
     window.addEventListener('scroll',()=>{
@@ -20,19 +19,26 @@ const Navbar = () => {
     })
   },[])
 
+  const handleNavClick = (category) => {
+    if (setActiveCategory) {
+      setActiveCategory(category);
+      const section = document.getElementById(`category-${category}`);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  };
+
   return (
     <div ref={navRef} className='navbar'>
       <div className="navbar-left">
-        <img src={logo} alt=''/>
+        <img src={logo} alt='MovieFlix'/>
         <ul>
-          <li>Home</li>
-          <li>TV Shows</li>
-          <li>Movies</li>
-          <li>New & Popular</li>
-          <li>My List</li>
-          <li>Browse by Languages</li>
-{/* <li><Link to="/login">Login</Link></li> */} {/* Remove Login link */}
-{/* <li><Link to="/signup">Sign Up</Link></li> */} {/* Remove Sign Up link */}
+          <li onClick={() => handleNavClick('now_playing')}>Home</li>
+          <li onClick={() => handleNavClick('top_rated')}>Movies</li>
+          <li onClick={() => handleNavClick('popular')}>Popular</li>
+          <li onClick={() => handleNavClick('upcoming')}>New & Popular</li>
+          <li onClick={() => handleNavClick('now_playing')}>My List</li>
         </ul>
       </div>
       <div className="navbar-right">

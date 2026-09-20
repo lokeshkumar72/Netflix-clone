@@ -44,12 +44,15 @@
 
 .navbar-left ul li {
   cursor: pointer;
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
   white-space: nowrap;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .navbar-left ul li:hover {
-  color: #b3b3b3;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 /* =========================

@@ -172,6 +172,28 @@
   }
 
   .card-list .card p {
-    font-size: 9px;
+    font-size: 8px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL MOBILE
+========================= */
+
+@media (max-width: 320px) {
+  .title-cards h2 {
+    font-size: 13px;
+  }
+
+  .card-list .card {
+    width: 125px;
+  }
+
+  .card-list img {
+    height: 70px;
+  }
+
+  .card-list .card p {
+    font-size: 7px;
   }
 }

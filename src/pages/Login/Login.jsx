@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/movieflix_logo.svg";
 import mail_logo from "../../assets/mail_logo.svg";
-import { login, signup, resetPassword, signInWithGoogle } from "../../firebase";
+import { login, signup, resetPassword } from "../../firebase";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -30,17 +30,6 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Authentication error:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const handleGoogleSignUp = async () => {
-    setLoading(true);
-    try {
-      await signInWithGoogle();
-    } catch (error) {
-      console.error("Google auth error:", error);
     } finally {
       setLoading(false);
     }
@@ -126,24 +115,32 @@ const Login = () => {
           </div>
 
           {signState === "Sign Up" && (
-            <button
-              type="button"
-              className="google-btn"
-              onClick={handleGoogleSignUp}
-            >
-            <img
-              src={mail_logo}
-              alt="Mail"
-              className="google-icon"
-            />
-            Continue with Email
-            </button>
-          )}
+            <>
+               <button
+                 type="button"
+                 className="google-btn mail-btn"
+                 onClick={() => {
+                   const gmailUser = email.split("@")[0] || "";
+                   const subject = encodeURIComponent("MovieFlix Account Signup");
+                   const body = `Hi MovieFlix team,\n\nI'd like to request access to the MovieFlix service.\n\nBest regards,\n${gmailUser || "User"}`;
+                   window.open(
+                     `https://mail.google.com/mail/?view=cm&fs=1&to=support@movieflix.com&su=${subject}&body=${encodeURIComponent(body)}`,
+                     "_blank"
+                   );
+                 }}
+               >
+                <img
+                  src={mail_logo}
+                  alt="Gmail"
+                  className="google-icon"
+                />
+                Continue with Gmail
+              </button>
 
-          {signState === "Sign Up" && (
-            <p className="google-signin-note">
-              Or sign up with your email above
-            </p>
+              <p className="google-signin-note">
+                Or sign up with your email above
+              </p>
+            </>
           )}
 
           <div className="form-help">
