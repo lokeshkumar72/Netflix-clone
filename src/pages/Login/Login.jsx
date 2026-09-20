@@ -125,18 +125,20 @@ const Login = () => {
             <span>OR</span>
           </div>
 
-          <button
-            type="button"
-            className="google-btn"
-            onClick={handleGoogleSignUp}
-          >
-            <img
-              src={google_logo}
-              alt="Google"
-              className="google-icon"
-            />
-            Continue with Google
-          </button>
+          {signState === "Sign Up" && (
+            <button
+              type="button"
+              className="google-btn"
+              onClick={handleGoogleSignUp}
+            >
+              <img
+                src={google_logo}
+                alt="Google"
+                className="google-icon"
+              />
+              Continue with Google
+            </button>
+          )}
 
           {signState === "Sign Up" && (
             <p className="google-signin-note">
