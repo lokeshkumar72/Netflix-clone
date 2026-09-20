@@ -31,6 +31,10 @@ const TitleCards = ({ title, category }) => {
   useEffect(() => {
     const fetchMovies = async () => {
       try {
+        if (!import.meta.env.VITE_TMDB_API_TOKEN) {
+          throw new Error("TMDB API token not configured");
+        }
+
         const response = await fetch(
           `https://api.themoviedb.org/3/movie/${
             category || "now_playing"
@@ -39,7 +43,7 @@ const TitleCards = ({ title, category }) => {
         );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch movies");
+          throw new Error("Failed to fetch movies from TMDB API");
         }
 
         const data = await response.json();
@@ -50,7 +54,7 @@ const TitleCards = ({ title, category }) => {
           setApiData(cards_data);
         }
       } catch (error) {
-        console.error("TMDB API Error:", error);
+        console.warn("Using fallback card data:", error.message || error);
         setApiData(cards_data);
       }
     };
