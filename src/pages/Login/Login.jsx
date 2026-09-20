@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/movieflix_logo.svg";
 import { login, signup } from "../../firebase";
 
 const Login = () => {

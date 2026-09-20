@@ -1,0 +1,6 @@
+<svg width="90" height="40" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg">
+  <rect width="90" height="40" rx="4" fill="none"/>
+  <text x="8" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1a73ff">Movie</text>
+  <text x="48" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fff">Flix</text>
+  <circle cx="30" cy="18" r="2" fill="#1a73ff"/>
+</svg>

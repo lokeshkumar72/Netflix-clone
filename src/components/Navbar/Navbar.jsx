@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'; // Import Link from react-router-dom
 import './Navbar.css'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/movieflix_logo.svg'
 import search_icon from '../../assets/search_icon.svg'
 import bell_icon from '../../assets/bell_icon.svg'
 import profile_img from'../../assets/profile_img.png'
