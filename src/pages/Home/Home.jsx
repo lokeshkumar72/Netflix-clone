@@ -54,7 +54,7 @@ const Home = () => {
 
         <TitleCards title="Blockbuster Movies" category="top_rated" />
 
-        <TitleCards title="Only on Netflix" category="popular" />
+        <TitleCards title="Only on MovieFlix" category="popular" />
 
         <TitleCards title="Upcoming Movies" category="upcoming" />
 
