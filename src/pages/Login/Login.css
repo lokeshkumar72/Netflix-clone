@@ -14,12 +14,14 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .login-logo {
   width: 150px;
   height: auto;
   display: block;
+  margin-bottom: 30px;
   opacity: 0;
   transform: translateY(-30px);
   animation: slideIn 0.8s ease-out forwards;
@@ -36,16 +38,18 @@
   width: 100%;
   max-width: 450px;
 
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(15, 15, 25, 0.65);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
 
-  border-radius: 4px;
-
-  padding: 60px;
+  padding: 50px;
 
   margin: auto;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.6s ease-out 0.2s forwards;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes fadeInUp {
@@ -57,34 +61,48 @@
 
 .login-form h1 {
   font-size: 32px;
-  font-weight: 500;
+  font-weight: 600;
   margin-bottom: 28px;
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(135deg, #ffffff, #b3b3ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .login-form input {
   width: 100%;
-  height: 50px;
+  height: 55px;
 
-  background: #333;
+  background: rgba(255, 255, 255, 0.05);
   color: white;
 
   margin: 12px 0;
 
-  border: 0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   outline: 0;
 
-  border-radius: 4px;
+  border-radius: 10px;
 
   padding: 16px 20px;
 
   font-size: 16px;
   font-weight: 500;
+
+  transition: all 0.3s ease;
 }
 
 .login-form input::placeholder {
   font-size: 16px;
   font-weight: 500;
   color: #b3b3b3;
+}
+
+.login-form input:focus {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: #1a73ff;
+  box-shadow: 0 0 0 3px rgba(26, 115, 255, 0.2);
 }
 
 .login-form button {
@@ -95,23 +113,30 @@
 
   padding: 16px;
 
-  background: #1a73ff;
+  background: linear-gradient(135deg, #1a73ff, #00c9ff);
   color: white;
 
-  border-radius: 4px;
+  border-radius: 10px;
 
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
 
   margin-top: 20px;
 
   cursor: pointer;
 
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(26, 115, 255, 0.4);
 }
 
 .login-form button:hover {
-   background: #2f80ed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(26, 115, 255, 0.6);
+  background: linear-gradient(135deg, #2f80ed, #00c9ff);
+}
+
+.login-form button:active {
+  transform: translateY(0);
 }
 
 .form-help {
@@ -129,7 +154,7 @@
 .remember {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
 }
 
 .remember input {
@@ -137,11 +162,13 @@
   height: 18px;
   margin: 0;
   cursor: pointer;
+  accent-color: #1a73ff;
 }
 
 .form-switch {
-  margin-top: 40px;
+  margin-top: 30px;
   color: #737373;
+  font-size: 14px;
 }
 
 .form-switch span {
@@ -152,6 +179,7 @@
   font-weight: 500;
 
   cursor: pointer;
+  color: #1a73ff;
 }
 
 .form-switch span:hover {
@@ -172,10 +200,11 @@
 .spinner {
   width: 60px;
   height: 60px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
+  border: 5px solid rgba(255, 255, 255, 0.2);
   border-top: 5px solid #1a73ff;
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  box-shadow: 0 0 30px rgba(26, 115, 255, 0.4);
 }
 
 @keyframes spin {
@@ -202,7 +231,7 @@
 
   .login-form {
     max-width: 420px;
-    padding: 45px;
+    padding: 40px;
   }
 
   .login-form h1 {
