@@ -1,6 +1,28 @@
-<svg width="90" height="40" viewBox="0 0 90 40" xmlns="http://www.w3.org/2000/svg">
-  <rect width="90" height="40" rx="4" fill="none"/>
-  <text x="8" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#1a73ff">Movie</text>
-  <text x="48" y="27" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#fff">Flix</text>
-  <circle cx="30" cy="18" r="2" fill="#1a73ff"/>
+<svg width="120" height="40" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="movieGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a73ff"/>
+      <stop offset="50%" stop-color="#00c9ff"/>
+      <stop offset="100%" stop-color="#1a73ff"/>
+    </linearGradient>
+    <linearGradient id="flixGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff4d6d"/>
+      <stop offset="100%" stop-color="#ff9e00"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="40" rx="6" fill="none"/>
+  <g filter="url(#shadow)">
+    <text x="8" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="url(#movieGradient)" letter-spacing="-0.5">M</text>
+    <text x="26" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">o</text>
+    <text x="40" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">v</text>
+    <text x="55" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">i</text>
+    <text x="63" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">e</text>
+    
+    <text x="80" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="800" fill="url(#flixGradient)" letter-spacing="-0.5">F</text>
+    <text x="96" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">l</text>
+    <text x="104" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">i</text>
+    <text x="109" y="28" font-family="Arial, sans-serif" font-size="20" font-weight="400" fill="#fff" letter-spacing="-0.5">x</text>
+  </g>
+  <circle cx="22" cy="12" r="2.5" fill="#1a73ff" opacity="0.6"/>
+  <circle cx="18" cy="14" r="1.2" fill="#00c9ff" opacity="0.4"/>
 </svg>
