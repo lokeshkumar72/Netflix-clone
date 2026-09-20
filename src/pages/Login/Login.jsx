@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/movieflix_logo.svg";
-import google_logo from "../../assets/google_logo.svg";
+import mail_logo from "../../assets/mail_logo.svg";
 import { login, signup, resetPassword, signInWithGoogle } from "../../firebase";
 import { toast } from "react-toastify";
 
@@ -131,12 +131,12 @@ const Login = () => {
               className="google-btn"
               onClick={handleGoogleSignUp}
             >
-              <img
-                src={google_logo}
-                alt="Google"
-                className="google-icon"
-              />
-              Continue with Google
+            <img
+              src={mail_logo}
+              alt="Mail"
+              className="google-icon"
+            />
+            Continue with Email
             </button>
           )}
 
