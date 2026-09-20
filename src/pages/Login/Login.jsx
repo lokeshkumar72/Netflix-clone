@@ -79,28 +79,30 @@ const Login = () => {
             required
           />
 
-          <div className="password-wrapper">
-            <input
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              type={showPassword ? "text" : "password"}
-              placeholder="Password"
-              autoComplete={
-                signState === "Sign Up"
-                  ? "new-password"
-                  : "current-password"
-              }
-              required
-            />
-            <button
-              type="button"
-              className="password-toggle"
-              onClick={() => setShowPassword(!showPassword)}
-              aria-label={showPassword ? "Hide password" : "Show password"}
-            >
-              {showPassword ? "Hide" : "Show"}
-            </button>
-          </div>
+           <div className="password-container">
+             <input
+               value={password}
+               onChange={(e) => setPassword(e.target.value)}
+               type={showPassword ? "text" : "password"}
+               placeholder="Password"
+               autoComplete={
+                 signState === "Sign Up"
+                   ? "new-password"
+                   : "current-password"
+               }
+               required
+             />
+             <label className="show-password-toggle">
+               <input
+                 type="checkbox"
+                 checked={showPassword}
+                 onChange={(e) => setShowPassword(e.target.checked)}
+                 aria-label="Toggle password visibility"
+               />
+               <span className="checkmark"></span>
+               Show password
+             </label>
+           </div>
 
           <button type="submit">
             {signState}

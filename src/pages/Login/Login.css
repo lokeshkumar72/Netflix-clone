@@ -105,34 +105,63 @@
   box-shadow: 0 0 0 3px rgba(26, 115, 255, 0.2);
 }
 
-.password-wrapper {
+.password-container {
   position: relative;
   margin: 12px 0;
 }
 
-.password-wrapper input {
-  padding-right: 60px;
-}
-
-.password-toggle {
+.show-password-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   position: absolute;
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  background: transparent;
-  border: none;
-  outline: none;
   color: #b3b3b3;
   font-size: 13px;
-  font-weight: 600;
   cursor: pointer;
-  padding: 0;
-  height: auto;
+  user-select: none;
   transition: color 0.3s ease;
 }
 
-.password-toggle:hover {
+.show-password-toggle:hover {
   color: #fff;
+}
+
+.show-password-toggle input[type="checkbox"] {
+  display: none;
+}
+
+.show-password-toggle .checkmark {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #b3b3b3;
+  border-radius: 3px;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.show-password-toggle input:checked + .checkmark {
+  border-color: #1a73ff;
+  background: #1a73ff;
+}
+
+.show-password-toggle input:checked + .checkmark::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 4px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.password-container input {
+  padding-right: 140px;
 }
 
 .login-form button {
