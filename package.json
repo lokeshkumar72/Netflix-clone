@@ -1,6 +1,6 @@
 {
-  "name": "netflix-clone",
-  "homepage": "https://lokeshkumar72.github.io/Netflix-clone",
+  "name": "movieflix",
+  "homepage": "https://lokeshkumar72.github.io/movieflix",
   "private": true,
   "version": "0.0.0",
   "type": "module",
