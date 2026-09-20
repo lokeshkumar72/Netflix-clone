@@ -8,6 +8,7 @@ const Login = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const user_auth = async (event) => {
@@ -78,18 +79,28 @@ const Login = () => {
             required
           />
 
-          <input
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            placeholder="Password"
-            autoComplete={
-              signState === "Sign Up"
-                ? "new-password"
-                : "current-password"
-            }
-            required
-          />
+          <div className="password-wrapper">
+            <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              type={showPassword ? "text" : "password"}
+              placeholder="Password"
+              autoComplete={
+                signState === "Sign Up"
+                  ? "new-password"
+                  : "current-password"
+              }
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
 
           <button type="submit">
             {signState}

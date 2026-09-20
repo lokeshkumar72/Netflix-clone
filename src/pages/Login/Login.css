@@ -105,6 +105,36 @@
   box-shadow: 0 0 0 3px rgba(26, 115, 255, 0.2);
 }
 
+.password-wrapper {
+  position: relative;
+  margin: 12px 0;
+}
+
+.password-wrapper input {
+  padding-right: 60px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #b3b3b3;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  height: auto;
+  transition: color 0.3s ease;
+}
+
+.password-toggle:hover {
+  color: #fff;
+}
+
 .login-form button {
   width: 100%;
 
