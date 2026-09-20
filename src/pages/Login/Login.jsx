@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/movieflix_logo.svg";
+import google_logo from "../../assets/google_logo.svg";
 import { login, signup, resetPassword, signInWithGoogle } from "../../firebase";
 import { toast } from "react-toastify";
 
@@ -130,7 +131,7 @@ const Login = () => {
             onClick={handleGoogleSignUp}
           >
             <img
-              src="https://www.svgrepo.com/download/303022-google-icon.svg"
+              src={google_logo}
               alt="Google"
               className="google-icon"
             />
