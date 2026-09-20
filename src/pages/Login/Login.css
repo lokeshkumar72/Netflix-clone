@@ -225,6 +225,78 @@
   text-decoration: underline;
 }
 
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 24px 0;
+  color: #737373;
+  font-size: 13px;
+  position: relative;
+}
+
+.divider::before,
+.divider::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.divider::before {
+  left: 0;
+}
+
+.divider::after {
+  right: 0;
+}
+
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  outline: 0;
+
+  padding: 14px;
+
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+
+  border-radius: 10px;
+
+  font-size: 16px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.google-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.google-signin-note {
+  text-align: center;
+  color: #737373;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
 .remember {
   display: flex;
   align-items: center;

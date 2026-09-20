@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/movieflix_logo.svg";
-import { login, signup, resetPassword } from "../../firebase";
+import { login, signup, resetPassword, signInWithGoogle } from "../../firebase";
 import { toast } from "react-toastify";
 
 const Login = () => {
@@ -29,6 +29,17 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Authentication error:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleGoogleSignUp = async () => {
+    setLoading(true);
+    try {
+      await signInWithGoogle();
+    } catch (error) {
+      console.error("Google auth error:", error);
     } finally {
       setLoading(false);
     }
@@ -108,6 +119,29 @@ const Login = () => {
           <button type="submit">
             {signState}
           </button>
+
+          <div className="divider">
+            <span>OR</span>
+          </div>
+
+          <button
+            type="button"
+            className="google-btn"
+            onClick={handleGoogleSignUp}
+          >
+            <img
+              src="https://www.svgrepo.com/download/303022-google-icon.svg"
+              alt="Google"
+              className="google-icon"
+            />
+            Continue with Google
+          </button>
+
+          {signState === "Sign Up" && (
+            <p className="google-signin-note">
+              Or sign up with your email above
+            </p>
+          )}
 
           <div className="form-help">
             <div className="remember">

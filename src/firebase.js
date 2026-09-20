@@ -5,6 +5,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
+  GoogleAuthProvider,
+  signInWithPopup,
 } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -172,5 +174,34 @@ const resetPassword = async (email) => {
   }
 };
 
+// Google Sign In
+const googleProvider = new GoogleAuthProvider();
+
+const signInWithGoogle = async () => {
+  try {
+    const result = await signInWithPopup(auth, googleProvider);
+    const user = result.user;
+
+    await addDoc(collection(db, "user"), {
+      uid: user.uid,
+      name: user.displayName || user.email.split("@")[0],
+      email: user.email,
+      authProvider: "google",
+      createdAt: new Date().toISOString(),
+    });
+
+    toast.success("Signed in with Google!");
+    return user;
+  } catch (error) {
+    console.error("Google sign-in error:", error);
+
+    if (error.code !== "auth/email-already-in-use") {
+      toast.error("Google sign-in failed. Please try again.");
+    }
+
+    throw error;
+  }
+};
+
 // Export
-export { auth, db, login, signup, logout, resetPassword };
+export { auth, db, login, signup, logout, resetPassword, signInWithGoogle };
