@@ -1,0 +1,17 @@
+<svg width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="faviconGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a73ff"/>
+      <stop offset="50%" stop-color="#00c9ff"/>
+      <stop offset="100%" stop-color="#1a73ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="6" fill="none"/>
+  <text x="1" y="24" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="url(#faviconGradient)" letter-spacing="-1">M</text>
+  <text x="14" y="24" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#fff" letter-spacing="-0.5">o</text>
+  <text x="22" y="24" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#fff" letter-spacing="-0.5">v</text>
+  <text x="28" y="24" font-family="Arial, sans-serif" font-size="10" font-weight="400" fill="#fff" letter-spacing="-0.5">ie</text>
+  <text x="1" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="url(#faviconGradient)" letter-spacing="-1">F</text>
+  <text x="14" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#fff" letter-spacing="-0.5">li</text>
+  <text x="22" y="40" font-family="Arial, sans-serif" font-size="18" font-weight="400" fill="#fff" letter-spacing="-0.5">x</text>
+</svg>
