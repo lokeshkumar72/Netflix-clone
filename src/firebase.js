@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -139,5 +140,37 @@ const logout = async () => {
   }
 };
 
+// Reset Password
+const resetPassword = async (email) => {
+  try {
+    await sendPasswordResetEmail(auth, email.trim().toLowerCase());
+    toast.success("Password reset email sent! Check your inbox.");
+  } catch (error) {
+    console.error("Reset password error:", error);
+
+    let message = "Failed to send reset email.";
+
+    switch (error.code) {
+      case "auth/invalid-email":
+        message = "Please enter a valid email address.";
+        break;
+
+      case "auth/user-not-found":
+        message = "No account found with this email.";
+        break;
+
+      case "auth/network-request-failed":
+        message = "Network error. Please check your internet connection.";
+        break;
+
+      default:
+        message = "Failed to send reset email. Please try again.";
+    }
+
+    toast.error(message);
+    throw error;
+  }
+};
+
 // Export
-export { auth, db, login, signup, logout };
+export { auth, db, login, signup, logout, resetPassword };

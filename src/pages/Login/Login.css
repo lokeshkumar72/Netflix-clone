@@ -210,6 +210,21 @@
   margin-top: 12px;
 }
 
+.forgot-password {
+  margin: 0;
+  color: #1a73ff;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #00c9ff;
+  text-decoration: underline;
+}
+
 .remember {
   display: flex;
   align-items: center;

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Login.css";
 import logo from "../../assets/movieflix_logo.svg";
-import { login, signup } from "../../firebase";
+import { login, signup, resetPassword } from "../../firebase";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [signState, setSignState] = useState("Sign In");
@@ -119,7 +120,21 @@ const Login = () => {
               </label>
             </div>
 
-            <p>Need Help?</p>
+            {signState === "Sign In" && (
+              <p
+                className="forgot-password"
+                onClick={async () => {
+                  if (!email) return toast.error("Please enter your email first.");
+                  try {
+                    await resetPassword(email);
+                  } catch {
+                    // error handled in firebase.js
+                  }
+                }}
+              >
+                Forgot Password?
+              </p>
+            )}
           </div>
         </form>
 
