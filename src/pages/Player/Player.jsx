@@ -15,6 +15,7 @@ const Player = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
+  const [status, setStatus] = useState("loading"); // "loading" | "ready" | "unavailable"
   const [apiData, setApiData] = useState({
     name: "",
     key: "",
@@ -23,17 +24,40 @@ const Player = () => {
   });
 
   useEffect(() => {
+    let cancelled = false;
+    setStatus("loading");
+
     fetch(
       `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
       options,
     )
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`TMDB request failed (${res.status})`);
+        return res.json();
+      })
       .then((data) => {
-        if (data.results && data.results.length > 0) {
-          setApiData(data.results[0]);
+        if (cancelled) return;
+
+        const trailer =
+          data.results?.find(
+            (v) => v.site === "YouTube" && v.type === "Trailer",
+          ) || data.results?.[0];
+
+        if (trailer) {
+          setApiData(trailer);
+          setStatus("ready");
+        } else {
+          setStatus("unavailable");
         }
       })
-      .catch((err) => console.error(err));
+      .catch((err) => {
+        console.error("Trailer fetch failed:", err);
+        if (!cancelled) setStatus("unavailable");
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, [id]);
 
   return (
@@ -46,20 +70,33 @@ const Player = () => {
         }}
         className="player__back"
       />
-      <iframe
-        width="90%"
-        height="90%"
-        src={`https://www.youtube.com/embed/${apiData.key}`}
-        title="Movie Trailer"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe>
-      <div className="player-info">
-        <p>{apiData.published_at?.slice(0, 10)}</p>
-        <p>{apiData.name}</p>
-        <p>{apiData.type}</p>
-      </div>
+
+      {status === "loading" && (
+        <div className="player-status">Loading trailer…</div>
+      )}
+
+      {status === "unavailable" && (
+        <div className="player-status">
+          No trailer is available for this title right now.
+        </div>
+      )}
+
+      {status === "ready" && (
+        <iframe
+          src={`https://www.youtube.com/embed/${apiData.key}`}
+          title="Movie Trailer"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      )}
+
+      {status === "ready" && (
+        <div className="player-info">
+          <p>{apiData.published_at?.slice(0, 10)}</p>
+          <p>{apiData.name}</p>
+          <p>{apiData.type}</p>
+        </div>
+      )}
     </div>
   );
 };

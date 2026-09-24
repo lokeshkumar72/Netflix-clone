@@ -11,6 +11,17 @@ import TitleCards from "../../components/TittleCards/TitleCards";
 import Footer from "../../components/Footer/Footer";
 
 const Home = () => {
+  // The hero banner is a static promotional image, not tied to a fetched
+  // movie/TMDB id, so Play/More Info can't open a real trailer for it here.
+  // Scrolling to the row below gives the buttons real, working behavior
+  // instead of doing nothing on click.
+  const scrollToTrending = () => {
+    const section = document.getElementById("category-now_playing");
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+
   return (
     <div className="home">
       <Navbar />
@@ -32,12 +43,12 @@ const Home = () => {
           </p>
 
           <div className="hero-btns">
-            <button className="btn">
+            <button className="btn" onClick={scrollToTrending}>
               <img src={play_icon} alt="Play" />
               Play
             </button>
 
-            <button className="btn dark-btn">
+            <button className="btn dark-btn" onClick={scrollToTrending}>
               <img src={info_icon} alt="More Info" />
               More Info
             </button>
@@ -50,15 +61,15 @@ const Home = () => {
       ========================= */}
 
       <div className="more-cards">
-        <TitleCards title="Trending Now" category="now_playing" />
+        <TitleCards title="Trending Now" category="now_playing" id="now_playing" />
 
-        <TitleCards title="Blockbuster Movies" category="top_rated" />
+        <TitleCards title="Blockbuster Movies" category="top_rated" id="top_rated" />
 
-        <TitleCards title="Only on MovieFlix" category="popular" />
+        <TitleCards title="Only on MovieFlix" category="popular" id="popular" />
 
-        <TitleCards title="Upcoming Movies" category="upcoming" />
+        <TitleCards title="Upcoming Movies" category="upcoming" id="upcoming" />
 
-        <TitleCards title="Top Picks for You" category="now_playing" />
+        <TitleCards title="Top Picks for You" category="now_playing" id="top-picks" />
       </div>
 
       {/* =========================

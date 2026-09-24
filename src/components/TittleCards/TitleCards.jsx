@@ -3,44 +3,33 @@ import "./TitleCards.css";
 import cards_data from "../../assets/cards/Cards_data";
 import { Link } from "react-router-dom";
 
-const options = {
-  method: "GET",
-  headers: {
-    accept: "application/json",
-    Authorization: `Bearer ${import.meta.env.VITE_TMDB_API_TOKEN}`,
-  },
-};
-
-const TitleCards = ({ title, category }) => {
+const TitleCards = ({ title, category, id }) => {
   const [apiData, setApiData] = useState([]);
   const cardsRef = useRef(null);
-
-  const handleWheel = (event) => {
-    event.preventDefault();
-
-    const scrollSpeed = 5;
-    const acceleration = 1.1;
-    const velocity = Math.abs(event.deltaY) * acceleration;
-    const scrollAmount = event.deltaY * (scrollSpeed + velocity);
-
-    if (cardsRef.current) {
-      cardsRef.current.scrollLeft += scrollAmount;
-    }
-  };
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        if (!import.meta.env.VITE_TMDB_API_TOKEN) {
+        const token = import.meta.env.VITE_TMDB_API_TOKEN;
+
+        if (!token) {
           throw new Error("TMDB API token not configured");
         }
 
-        const response = await fetch(
-          `https://api.themoviedb.org/3/movie/${
-            category || "now_playing"
-          }?language=en-US&page=1`,
-          options
-        );
+        const movieCategory = category || "now_playing";
+
+        const url =
+          "https://api.themoviedb.org/3/movie/" +
+          movieCategory +
+          "?language=en-US&page=1";
+
+        const response = await fetch(url, {
+          method: "GET",
+          headers: {
+            accept: "application/json",
+            Authorization: "Bearer " + token,
+          },
+        });
 
         if (!response.ok) {
           throw new Error("Failed to fetch movies from TMDB API");
@@ -60,42 +49,62 @@ const TitleCards = ({ title, category }) => {
     };
 
     fetchMovies();
-
-    const currentRef = cardsRef.current;
-
-    if (currentRef) {
-      currentRef.addEventListener("wheel", handleWheel, {
-        passive: false,
-      });
-    }
-
-    return () => {
-      if (currentRef) {
-        currentRef.removeEventListener("wheel", handleWheel);
-      }
-    };
   }, [category]);
 
+  useEffect(() => {
+    const currentRef = cardsRef.current;
+
+    if (!currentRef) {
+      return;
+    }
+
+    const handleWheel = (event) => {
+      event.preventDefault();
+      currentRef.scrollLeft += event.deltaY;
+    };
+
+    currentRef.addEventListener("wheel", handleWheel, {
+      passive: false,
+    });
+
+    return () => {
+      currentRef.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   return (
-    <div className="title-cards">
+    <div
+      className="title-cards"
+      id={id ? "category-" + id : undefined}
+    >
       <h2>{title || "Popular on MovieFlix"}</h2>
 
       <div className="card-list" ref={cardsRef}>
         {apiData.map((card, index) => {
           const imageUrl = card.backdrop_path
-            ? `https://image.tmdb.org/t/p/w500${card.backdrop_path}`
+            ? "https://image.tmdb.org/t/p/w500" + card.backdrop_path
             : card.image;
 
           const movieTitle =
-            card.original_title || card.title || card.name || "Movie";
+            card.original_title ||
+            card.title ||
+            card.name ||
+            "Movie";
+
+          const cardId = card.id || "unknown-" + index;
 
           return (
             <Link
-              to={`/player/${card.id}`}
+              to={"/player/" + cardId}
               className="card"
-              key={card.id || index}
+              key={cardId}
             >
-              <img src={imageUrl} alt={movieTitle} />
+              <img
+                src={imageUrl}
+                alt={movieTitle}
+                loading="lazy"
+              />
+
               <p>{movieTitle}</p>
             </Link>
           );

@@ -1,24 +1,121 @@
-.player{
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.player {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  position: relative;
 }
-.player img{
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 50px;
-    cursor: pointer;
+
+.player__back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 50px;
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.2s ease;
 }
-.player iframe{
-    border-radius: 10px;
+
+.player__back:hover {
+  transform: scale(1.1);
 }
-.player-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    
+
+/* =========================
+   VIDEO FRAME
+   width capped + aspect-ratio keeps
+   a true 16:9 video at every size
+========================= */
+
+.player iframe {
+  display: block;
+  width: 90%;
+  max-width: 1100px;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: 0;
+  border-radius: 10px;
+}
+
+.player-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  width: 90%;
+  max-width: 1100px;
+  margin-top: 15px;
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.player-info p {
+  margin: 0;
+}
+
+.player-status {
+  color: #b3b3b3;
+  font-size: 16px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 800px) {
+  .player__back {
+    width: 38px;
+    top: 15px;
+    left: 15px;
+  }
+
+  .player-info {
+    font-size: 13px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 500px) {
+  .player {
+    padding: 15px 0;
+  }
+
+  .player__back {
+    width: 32px;
+    top: 12px;
+    left: 12px;
+  }
+
+  .player iframe {
+    width: 94%;
+    border-radius: 6px;
+  }
+
+  .player-info {
+    width: 94%;
+    font-size: 11px;
+    gap: 6px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media (max-width: 360px) {
+  .player__back {
+    width: 28px;
+  }
+
+  .player-info {
+    font-size: 10px;
+  }
 }

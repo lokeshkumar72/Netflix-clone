@@ -7,6 +7,9 @@ import {
   sendPasswordResetEmail,
   GoogleAuthProvider,
   signInWithPopup,
+  setPersistence,
+  browserLocalPersistence,
+  browserSessionPersistence,
 } from "firebase/auth";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
@@ -82,8 +85,15 @@ const signup = async (name, email, password) => {
 };
 
 // Login
-const login = async (email, password) => {
+const login = async (email, password, rememberMe = true) => {
   try {
+    // "Remember Me" checked -> persists across browser restarts (localStorage).
+    // Unchecked -> cleared when the browser tab/window closes (sessionStorage).
+    await setPersistence(
+      auth,
+      rememberMe ? browserLocalPersistence : browserSessionPersistence,
+    );
+
     const userCredential = await signInWithEmailAndPassword(
       auth,
       email.trim().toLowerCase(),

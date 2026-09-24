@@ -1,31 +1,105 @@
-.login {
-  width: 100%;
+/* =========================
+   LOGIN CONTAINER (Main Wrapper)
+========================= */
+
+.login-container {
   min-height: 100vh;
-
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
-    url("/background_banner.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  padding: 20px 8%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+  overflow: hidden;
+  gap: 30px;
+}
+
+.login-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(26, 115, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(0, 201, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(138, 82, 255, 0.08) 0%, transparent 60%);
+  z-index: 1;
+}
+
+/* =========================
+   BACKGROUND SECTION
+========================= */
+
+.login-bg {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 20px;
+  gap: 10px;
+  z-index: 2;
+}
+
+.login-bg h2 {
+  font-size: clamp(1.6rem, 5vw + 0.5rem, 2.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, #ffffff 0%, #1a73ff 50%, #00c9ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  line-height: 1.15;
+}
+
+.login-bg-accent {
+  width: 56px;
+  height: 3px;
+  margin: 2px 0 4px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #1a73ff, #00c9ff);
+  opacity: 0;
+  transform: scaleX(0);
+  animation: accentGrow 0.6s ease-out 0.3s forwards;
+}
+
+@keyframes accentGrow {
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.login-bg p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(0.85rem, 1.2vw + 0.6rem, 1.1rem);
+  max-width: 600px;
+  line-height: 1.5;
+}
+
+/* =========================
+   LOGIN WRAPPER
+========================= */
+
+.login-wrapper {
+  width: 100%;
+  max-width: 420px;
+  z-index: 10;
+  position: relative;
 }
 
 .login-logo {
   width: 200px;
   height: auto;
   display: block;
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
   opacity: 0;
   transform: translateY(-30px);
   animation: slideIn 0.8s ease-out forwards;
-  filter: drop-shadow(0 4px 12px rgba(255, 255, 255, 0.2));
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.3));
 }
 
 @keyframes slideIn {
@@ -35,22 +109,18 @@
   }
 }
 
-.login-form {
-  width: 100%;
-  max-width: 450px;
-
-  background: rgba(15, 15, 25, 0.65);
-  backdrop-filter: blur(20px);
+.login-form-container {
+  background: rgba(15, 15, 25, 0.8);
+  backdrop-filter: blur(30px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-
-  padding: 50px;
-
-  margin: auto;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 
+    0 30px 80px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 0.6s ease-out 0.2s forwards;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
 }
 
 @keyframes fadeInUp {
@@ -60,171 +130,146 @@
   }
 }
 
-.login-form h1 {
-  font-size: 32px;
-  font-weight: 600;
-  margin-bottom: 28px;
-  color: #fff;
+.login-title {
+  font-size: clamp(1.4rem, 2.5vw + 0.9rem, 2rem);
+  font-weight: 700;
+  margin-bottom: 30px;
   text-align: center;
-  background: linear-gradient(135deg, #ffffff, #b3b3ff);
+  background: linear-gradient(135deg, #ffffff 0%, #1a73ff 50%, #00c9ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  letter-spacing: -0.5px;
 }
 
-.login-form input {
+/* =========================
+   INPUT GROUPS (Floating Labels)
+========================= */
+
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
   width: 100%;
   height: 55px;
-
+  padding: 18px 16px;
   background: rgba(255, 255, 255, 0.05);
-  color: white;
-
-  margin: 12px 0;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
-  outline: 0;
-
-  border-radius: 10px;
-
-  padding: 16px 20px;
-
+  border-radius: 12px;
+  color: #fff;
   font-size: 16px;
-  font-weight: 500;
-
+  outline: none;
   transition: all 0.3s ease;
+  caret-color: #1a73ff;
 }
 
-.login-form input::placeholder {
-  font-size: 16px;
-  font-weight: 500;
-  color: #b3b3b3;
+.input-group input::placeholder {
+  color: transparent;
 }
 
-.login-form input:focus {
+.input-group input:focus {
   background: rgba(255, 255, 255, 0.08);
   border-color: #1a73ff;
   box-shadow: 0 0 0 3px rgba(26, 115, 255, 0.2);
 }
 
-.password-container {
-  position: relative;
-  margin: 12px 0;
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 12px;
+  font-size: 12px;
+  color: #1a73ff;
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+  padding: 0 6px;
+  backdrop-filter: blur(5px);
 }
 
-.show-password-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+.input-group label {
   position: absolute;
-  right: 12px;
+  left: 16px;
+  top: 18px;
+  color: #b3b3b3;
+  font-size: 15px;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+/* =========================
+   PASSWORD TOGGLE
+========================= */
+
+.password-input-group {
+  padding-right: 52px;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 6px;
   top: 50%;
   transform: translateY(-50%);
-  color: #b3b3b3;
-  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: transparent;
+  border-radius: 8px;
+  color: #8a8a9a;
   cursor: pointer;
-  user-select: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.show-password-toggle:hover {
+.password-toggle-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.password-toggle-btn:hover {
   color: #fff;
+  background: rgba(255, 255, 255, 0.08);
 }
 
-.show-password-toggle input[type="checkbox"] {
-  display: none;
+.password-toggle-btn:focus-visible {
+  outline: 2px solid #1a73ff;
+  outline-offset: 2px;
 }
 
-.show-password-toggle .checkmark {
-  display: inline-block;
-  width: 16px;
-  height: 16px;
-  border: 2px solid #b3b3b3;
-  border-radius: 3px;
-  position: relative;
-  transition: all 0.3s ease;
-}
+/* =========================
+   SUBMIT BUTTON
+========================= */
 
-.show-password-toggle input:checked + .checkmark {
-  border-color: #1a73ff;
-  background: #1a73ff;
-}
-
-.show-password-toggle input:checked + .checkmark::after {
-  content: "";
-  position: absolute;
-  left: 5px;
-  top: 2px;
-  width: 4px;
-  height: 8px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-
-.password-container input {
-  padding-right: 140px;
-}
-
-.login-form button {
+.login-submit-btn {
   width: 100%;
-
-  border: 0;
-  outline: 0;
-
   padding: 16px;
-
   background: linear-gradient(135deg, #1a73ff, #00c9ff);
   color: white;
-
-  border-radius: 10px;
-
+  border: none;
+  border-radius: 12px;
   font-size: 16px;
-  font-weight: 600;
-
-  margin-top: 20px;
-
+  font-weight: 700;
+  margin-top: 10px;
   cursor: pointer;
-
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(26, 115, 255, 0.4);
+  box-shadow: 0 6px 25px rgba(26, 115, 255, 0.4);
 }
 
-.login-form button:hover {
+.login-submit-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(26, 115, 255, 0.6);
+  box-shadow: 0 10px 35px rgba(26, 115, 255, 0.6);
   background: linear-gradient(135deg, #2f80ed, #00c9ff);
 }
 
-.login-form button:active {
+.login-submit-btn:active {
   transform: translateY(0);
 }
 
-.form-help {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  color: #b3b3b3;
-
-  font-size: 13px;
-
-  margin-top: 12px;
-}
-
-.forgot-password {
-  margin: 0;
-  color: #1a73ff;
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  text-decoration: none;
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-}
-
-.forgot-password:hover {
-  color: #00c9ff;
-  text-decoration: underline;
-}
+/* =========================
+   DIVIDER
+========================= */
 
 .divider {
   display: flex;
@@ -254,57 +299,50 @@
   right: 0;
 }
 
-.google-btn {
+/* =========================
+   GMAIL BUTTON
+========================= */
+
+.gmail-btn {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
   width: 100%;
-
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  outline: 0;
-
   padding: 14px;
-
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
-
-  border-radius: 10px;
-
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
   font-size: 16px;
   font-weight: 600;
-
   cursor: pointer;
-
   transition: all 0.3s ease;
 }
 
-.google-btn:hover {
+.gmail-btn:hover {
   background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
-.google-btn.mail-btn {
-  background: rgba(26, 115, 255, 0.1);
-  border-color: rgba(26, 115, 255, 0.3);
-}
-
-.google-btn.mail-btn:hover {
-  background: rgba(26, 115, 255, 0.15);
-}
-
-.google-icon {
+.gmail-icon {
   width: 22px;
   height: 22px;
   filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5));
   flex-shrink: 0;
 }
 
-.google-signin-note {
-  text-align: center;
-  color: #737373;
+/* =========================
+   FORM HELP SECTION
+========================= */
+
+.form-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #b3b3b3;
   font-size: 13px;
   margin-top: 16px;
 }
@@ -323,46 +361,82 @@
   accent-color: #1a73ff;
 }
 
+.forgot-password {
+  margin: 0;
+  color: #1a73ff;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #00c9ff;
+  text-decoration: underline;
+}
+
+.forgot-password:focus-visible {
+  outline: 2px solid #1a73ff;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* =========================
+   FORM SWITCH
+========================= */
+
 .form-switch {
-  margin-top: 30px;
+  margin-top: 24px;
+  text-align: center;
   color: #737373;
   font-size: 14px;
 }
 
 .form-switch span {
-  margin-left: 6px;
-
-  color: #fff;
-
-  font-weight: 500;
-
-  cursor: pointer;
   color: #1a73ff;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 6px;
+  transition: color 0.3s ease;
 }
 
 .form-switch span:hover {
+  color: #00c9ff;
   text-decoration: underline;
 }
 
+.form-switch span:focus-visible {
+  outline: 2px solid #1a73ff;
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* =========================
+   LOADING SPINNER
+========================= */
+
 .login-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  background: #000;
+  background: linear-gradient(135deg, #0f0f23, #1a1a2e);
+  z-index: 9999;
 }
 
 .spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid rgba(255, 255, 255, 0.2);
+  width: 70px;
+  height: 70px;
+  border: 5px solid rgba(255, 255, 255, 0.15);
   border-top: 5px solid #1a73ff;
   border-radius: 50%;
-  animation: spin 1s linear infinite;
-  box-shadow: 0 0 30px rgba(26, 115, 255, 0.4);
+  animation: spin 0.8s linear infinite;
+  box-shadow: 
+    0 0 30px rgba(26, 115, 255, 0.4),
+    0 0 60px rgba(0, 195, 255, 0.3);
 }
 
 @keyframes spin {
@@ -370,41 +444,17 @@
   100% { transform: rotate(360deg); }
 }
 
-.login-spinner img {
-  width: 60px;
-}
-
 /* =========================
    TABLET
 ========================= */
 
 @media (max-width: 800px) {
-  .login {
-    padding: 20px 5%;
+  .login-form-container {
+    padding: 30px;
   }
 
-  .login-logo {
-    width: 120px;
-  }
-
-  .login-form {
-    max-width: 420px;
-    padding: 40px;
-  }
-
-  .login-form h1 {
-    font-size: 28px;
-    margin-bottom: 24px;
-  }
-
-  .login-form input {
-    height: 48px;
-    font-size: 15px;
-  }
-
-  .login-form button {
-    padding: 14px;
-    font-size: 15px;
+  .input-group input {
+    height: 50px;
   }
 }
 
@@ -413,69 +463,45 @@
 ========================= */
 
 @media (max-width: 500px) {
-  .login {
-    min-height: 100vh;
-    padding: 15px 5%;
+  .login-container {
+    padding: 15px;
+  }
 
-    background-position: center;
+  .login-container::before {
+    display: none;
+  }
+
+  .login-bg {
+    position: relative;
+    padding: 20px;
   }
 
   .login-logo {
-    width: 100px;
+    width: 160px;
   }
 
-  .login-form {
-    width: 100%;
-    max-width: 100%;
-
-    padding: 30px 20px;
-
-    margin: auto;
+  .login-form-container {
+    padding: 25px;
+    margin-top: 20px;
   }
 
-  .login-form h1 {
-    font-size: 25px;
-    margin-bottom: 20px;
+  .login-title {
+    margin-bottom: 25px;
   }
 
-  .login-form input {
-    height: 46px;
+  .input-group input {
+    height: 48px;
+    font-size: 15px;
+  }
 
-    margin: 9px 0;
+  .login-submit-btn {
+    padding: 14px;
+    font-size: 15px;
+  }
 
-    padding: 14px 15px;
-
+  .gmail-btn {
+    padding: 12px;
     font-size: 14px;
-  }
-
-  .login-form input::placeholder {
-    font-size: 14px;
-  }
-
-  .login-form button {
-    padding: 13px;
-
-    margin-top: 16px;
-
-    font-size: 14px;
-  }
-
-  .form-help {
-    font-size: 11px;
-  }
-
-  .remember input {
-    width: 16px;
-    height: 16px;
-  }
-
-  .form-switch {
-    margin-top: 30px;
-    font-size: 13px;
-  }
-
-  .form-switch span {
-    margin-left: 4px;
   }
 }
 
@@ -484,42 +510,15 @@
 ========================= */
 
 @media (max-width: 360px) {
-  .login {
-    padding: 12px 4%;
-  }
-
   .login-logo {
-    width: 90px;
+    width: 140px;
   }
 
-  .login-form {
-    padding: 25px 16px;
+  .login-form-container {
+    padding: 20px;
   }
 
-  .login-form h1 {
-    font-size: 22px;
-  }
-
-  .login-form input {
-    height: 44px;
-    padding: 12px;
-    font-size: 13px;
-  }
-
-  .login-form input::placeholder {
-    font-size: 13px;
-  }
-
-  .login-form button {
-    padding: 12px;
-    font-size: 13px;
-  }
-
-  .form-help {
-    font-size: 10px;
-  }
-
-  .form-switch {
-    font-size: 12px;
+  .input-group input {
+    font-size: 14px;
   }
 }
