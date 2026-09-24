@@ -1,14 +1,16 @@
-# 🎬 Netflix Clone
+# 🎬 MovieFlix
 
-A modern and responsive **Netflix-inspired movie streaming web application** built using **React.js, Vite, Firebase Authentication, and TMDB API**.
+A modern and responsive **movie streaming web application** built with **React.js, Vite, Firebase Authentication, and TMDB API**.
 
-This project recreates the core experience of a movie streaming platform, allowing users to browse movies, search for content, view movie information, watch trailers, and securely authenticate using Firebase.
+MovieFlix provides a movie-platform experience where users can browse movies and TV shows, search for content, explore movie details, watch trailers, and securely authenticate using Firebase.
 
 ---
 
 ## 🚀 Live Demo
 
-🌐 **[View Live Project](https://netflix-clone-phi-cyan-66.vercel.app/)**
+🌐 **[View Live MovieFlix](https://movieflix-eight-olive.vercel.app/)**
+
+📦 **[View Source Code](https://github.com/lokeshkumar72/movieflix)**
 
 ---
 
@@ -16,38 +18,52 @@ This project recreates the core experience of a movie streaming platform, allowi
 
 ### 🏠 Home Page
 
-![Home Page](./screenshots/homepage%20screenshot.png)
+![MovieFlix Home Page](./screenshots/Homepage.png)
 
 ### 🔐 Sign In Page
 
-![Sign In Page](./screenshots/login%20screenshot.png)
+![MovieFlix Login Page](./screenshots/Sign%20In.png)
 
 ### 📝 Sign Up Page
 
-![Sign Up Page](./screenshots/signup%20page%20screenshot.png)
+![MovieFlix Sign Up Page](./screenshots/Sign%20Up.png)
 
----
+### ▶️ Player Page
+
+![MovieFlix Player Page](./screenshots/Player.png)
 
 ## ✨ Features
 
-- 🎬 Netflix-inspired user interface
+- 🎬 Modern movie streaming platform UI
 - 🏠 Dynamic home page
-- 🔎 Movie search functionality
-- 🎞️ Browse movies and TV shows
+- 🔎 Movie and TV show browsing
+- 🎞️ Dynamic movie categories
 - 📄 Movie details
 - ▶️ Watch movie trailers
 - 🔐 Firebase Authentication
 - 👤 User registration and login
-- 🚪 Secure logout functionality
-- 📱 Responsive design
-- ⚡ Fast loading with Vite
+- 🔑 Password reset
+- 🔵 Google Authentication
+- 🚪 Secure logout
+- 💾 Firebase Firestore integration
 - 🌐 TMDB API integration
-- 🧭 Client-side routing
-- 🎨 Modern and responsive UI
+- 🧭 React Router navigation
+- 📱 Responsive design
+- ⚡ Fast development with Vite
+- 🎨 Modern and user-friendly interface
+- 🔒 Environment variable support for API configuration
 
 ---
 
-## 🛠️ Technologies Used
+## 📸 Preview
+
+> The application is deployed and available online.
+
+🌐 **[Open MovieFlix](https://movieflix-eight-olive.vercel.app/)**
+
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
 
@@ -58,13 +74,13 @@ This project recreates the core experience of a movie streaming platform, allowi
 - **Vite**
 - **React Router**
 
-### APIs & Services
+### Backend & Services
 
-- **TMDB API** — Movie and TV show data
-- **Firebase Authentication** — User authentication
-- **Firebase** — Backend services
+- **Firebase Authentication**
+- **Firebase Firestore**
+- **TMDB API**
 
-### Tools
+### Development Tools
 
 - **Git**
 - **GitHub**
@@ -76,14 +92,37 @@ This project recreates the core experience of a movie streaming platform, allowi
 
 ## 📂 Project Structure
 
+`## 📂 Project Structure
+
 ```text
-Netflix-clone/
+movieflix/
 │
 ├── public/
 │
+├── screenshots/
+│   ├── homepage.png
+│   ├── login.png
+│   ├── signup.png
+│   └── player.png
+│
+├── favicon/
+│   ├── apple-touch-icon.png
+│   ├── favicon-96x96.png
+│   ├── favicon.ico
+│   ├── favicon.svg
+│   ├── site.webmanifest
+│   ├── web-app-manifest-192x192.png
+│   └── web-app-manifest-512x512.png
+│
 ├── src/
 │   ├── assets/
+│   │   └── cards/
+│   │
 │   ├── components/
+│   │   ├── Navbar/
+│   │   ├── TittleCards/
+│   │   └── ...
+│   │
 │   ├── pages/
 │   │   ├── Home/
 │   │   ├── Login/
@@ -92,17 +131,13 @@ Netflix-clone/
 │   │
 │   ├── firebase.js
 │   ├── App.jsx
-│   ├── main.jsx
-│   └── ...
-│
-├── screenshots/
-│   ├── homepage screenshot.png
-│   ├── login screenshot.png
-│   └── signup screenshot.png
+│   └── main.jsx
 │
 ├── .gitignore
+├── index.html
 ├── package.json
 ├── package-lock.json
+├── vercel.json
 ├── vite.config.js
 └── README.md
 ```
@@ -111,18 +146,18 @@ Netflix-clone/
 
 ## ⚙️ Installation & Setup
 
-Follow these steps to run the project locally.
+Follow these steps to run MovieFlix locally.
 
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/lokeshkumar72/Netflix-clone.git
+git clone https://github.com/lokeshkumar72/movieflix.git
 ```
 
-### 2. Navigate to the project
+### 2. Navigate to the project directory
 
 ```bash
-cd Netflix-clone
+cd movieflix
 ```
 
 ### 3. Install dependencies
@@ -133,13 +168,15 @@ npm install
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root directory.
 
 ```env
-VITE_TMDB_ACCESS_TOKEN=your_tmdb_access_token
+VITE_TMDB_API_TOKEN=your_tmdb_api_token
 ```
 
-Add your Firebase configuration according to your project's Firebase setup.
+Add the required Firebase configuration according to your Firebase project.
+
+> ⚠️ **Important:** Never upload `.env` files, API keys, passwords, or private credentials to GitHub.
 
 ### 5. Start the development server
 
@@ -147,7 +184,7 @@ Add your Firebase configuration according to your project's Firebase setup.
 npm run dev
 ```
 
-The application will run at:
+The application will be available at:
 
 ```text
 http://localhost:5173
@@ -157,94 +194,111 @@ http://localhost:5173
 
 ## 🔑 Environment Variables
 
-The project requires environment variables for API access.
+MovieFlix uses environment variables to securely configure API access.
 
-| Variable                 | Description           |
-| ------------------------ | --------------------- |
-| `VITE_TMDB_ACCESS_TOKEN` | TMDB API access token |
+| Variable              | Description           |
+| --------------------- | --------------------- |
+| `VITE_TMDB_API_TOKEN` | TMDB API access token |
 
-> ⚠️ Never upload private API keys, passwords, or sensitive credentials to GitHub.
+### `.gitignore`
+
+Environment files are excluded from Git:
+
+```text
+.env
+.env.local
+.env.production
+.env.development
+```
+
+This helps prevent API credentials from being accidentally committed to the repository.
 
 ---
 
 ## 🔥 Firebase Authentication
 
-Firebase Authentication is used to handle user authentication.
+MovieFlix uses **Firebase Authentication** to manage user accounts and authentication.
 
 ### Authentication Features
 
-- User Sign Up
-- User Login
-- User Logout
-- Authentication state management
-- Protected user functionality
+- 👤 User Sign Up
+- 🔐 User Login
+- 🚪 User Logout
+- 🔵 Google Sign-In
+- 🔑 Password Reset
+- 💾 Authentication Persistence
+- 🔄 Authentication State Management
 
-Firebase makes it possible to securely manage user authentication without building a custom authentication backend.
+Firebase handles the authentication infrastructure without requiring a custom authentication server.
+
+---
+
+## 🗄️ Firebase Firestore
+
+Firebase Firestore is used for application data management.
+
+The project integrates Firestore with the frontend to store application-related user data.
 
 ---
 
 ## 🎞️ TMDB API
 
-The **TMDB API** is used to retrieve movie and TV show information.
+MovieFlix uses the **TMDB API** to retrieve movie and TV show information.
 
-The application uses TMDB data for:
+TMDB data is used for:
 
-- Movie posters
-- Backdrop images
-- Movie titles
-- Movie descriptions
-- Ratings
-- Release information
-- Trailers
-- Movie videos
-
-> This project is for educational and portfolio purposes and is not affiliated with Netflix.
+- 🎬 Movie titles
+- 🖼️ Movie posters
+- 🌄 Backdrop images
+- 📝 Movie descriptions
+- ⭐ Ratings
+- 📅 Release information
+- 🎥 Trailers
+- 📺 TV shows and movie videos
 
 ---
 
 ## 🧭 Application Flow
 
 ```text
-User
- │
- ▼
-Netflix Clone
- │
- ├── Sign Up
- │      └── Firebase Authentication
- │
- ├── Login
- │      └── Firebase Authentication
- │
- ▼
-Home Page
- │
- ├── Browse Movies
- ├── Search
- ├── Movie Details
- └── Trailers
-        │
-        ▼
-     TMDB API
+                         User
+                           │
+                           ▼
+                       MovieFlix
+                           │
+             ┌─────────────┴─────────────┐
+             │                           │
+           Sign Up                     Login
+             │                           │
+             └─────────────┬─────────────┘
+                           │
+                           ▼
+                 Firebase Authentication
+                           │
+                           ▼
+                       Home Page
+                           │
+            ┌──────────────┼──────────────┐
+            │              │              │
+         Browse          Search        Categories
+         Movies            │              │
+            │              └──────┬───────┘
+            │                     │
+            ▼                     ▼
+       Movie Cards          Movie Details
+                                  │
+                                  ▼
+                              Trailers
+                                  │
+                                  ▼
+                               TMDB API
 ```
-
----
-
-## 📱 Responsive Design
-
-The application is designed to provide a consistent experience across:
-
-- 💻 Desktop
-- 📱 Mobile
-- 📲 Tablet
-
-The UI adapts to different screen sizes for better usability and accessibility.
 
 ---
 
 ## 💡 Key React Concepts Used
 
-This project helped me practice several important React concepts:
+This project demonstrates practical usage of several React concepts:
 
 - Functional Components
 - React Hooks
@@ -256,91 +310,113 @@ This project helped me practice several important React concepts:
 - API Integration
 - Asynchronous JavaScript
 - React Router
+- Authentication State Management
 - Environment Variables
+- Firebase Integration
 
 ---
 
 ## 🧠 Challenges & Solutions
 
-### 🔹 API Integration
+### 🔹 Dynamic Movie Data
 
-**Challenge:** Fetching and displaying dynamic movie data.
+**Challenge:** Fetching and displaying constantly changing movie and TV show information.
 
-**Solution:** Integrated TMDB API and handled asynchronous API requests using JavaScript and React.
+**Solution:** Integrated the TMDB API and handled asynchronous API requests using React and JavaScript.
 
-### 🔹 Authentication
+### 🔹 User Authentication
 
-**Challenge:** Implementing user registration and login.
+**Challenge:** Implementing registration, login, logout, password reset, and Google authentication.
 
-**Solution:** Integrated Firebase Authentication for secure user authentication.
+**Solution:** Integrated Firebase Authentication to manage authentication and user sessions.
 
-### 🔹 Responsive UI
+### 🔹 Responsive Interface
 
-**Challenge:** Making the application work across different screen sizes.
+**Challenge:** Making the application usable across desktop, tablet, and mobile devices.
 
-**Solution:** Used responsive CSS techniques and flexible layouts.
+**Solution:** Implemented responsive CSS and flexible layouts.
 
-### 🔹 API Errors
+### 🔹 API Error Handling
 
-**Challenge:** Handling failed API requests and unavailable movie data.
+**Challenge:** Handling failed API requests and unavailable movie information.
 
 **Solution:** Added error handling and fallback behavior when API requests fail.
+
+### 🔹 Environment Security
+
+**Challenge:** Preventing API credentials from being uploaded to GitHub.
+
+**Solution:** Added `.env` files to `.gitignore` and configured API access through environment variables.
+
+---
+
+## 📱 Responsive Design
+
+MovieFlix is designed to work across multiple screen sizes:
+
+- 💻 Desktop
+- 💻 Laptop
+- 📱 Mobile
+- 📲 Tablet
+
+The UI adapts to different screen sizes to provide a consistent user experience.
 
 ---
 
 ## 🚀 Future Improvements
 
-The following features can be added in future versions:
+Planned improvements include:
 
-- ❤️ Add to Watchlist
+- ❤️ Watchlist functionality
 - ⭐ Personalized recommendations
 - 👤 User profile page
 - 🎥 Continue Watching
 - 📜 Watch History
 - 🔔 Notifications
-- 🌙 Dark/Light theme options
-- 🎬 Improved video player
 - 🔍 Advanced movie filtering
+- 🎬 Improved video player
 - 📱 Progressive Web App (PWA)
-- 🎯 Personalized content based on user activity
+- 🎯 Personalized content recommendations
+- 🌙 Additional theme options
 
 ---
 
 ## 📊 Project Highlights
 
-| Category       | Details      |
-| -------------- | ------------ |
-| Frontend       | React.js     |
-| Build Tool     | Vite         |
-| Authentication | Firebase     |
-| Movie API      | TMDB         |
-| Routing        | React Router |
-| Deployment     | Vercel       |
-| Repository     | GitHub       |
-| Responsive     | Yes          |
+| Category       | Details                 |
+| -------------- | ----------------------- |
+| Project        | MovieFlix               |
+| Frontend       | React.js                |
+| Language       | JavaScript              |
+| Build Tool     | Vite                    |
+| Authentication | Firebase Authentication |
+| Database       | Firebase Firestore      |
+| Movie API      | TMDB API                |
+| Routing        | React Router            |
+| Styling        | CSS3                    |
+| Deployment     | Vercel                  |
+| Repository     | GitHub                  |
+| Responsive     | Yes                     |
 
 ---
 
 ## 📚 Learning Outcomes
 
-By building this project, I gained practical experience with:
+By building MovieFlix, I gained practical experience in:
 
 - Building real-world React applications
+- Creating reusable React components
 - Consuming REST APIs
 - Firebase Authentication
-- React component architecture
-- Client-side routing
+- Firebase Firestore
+- React Router
 - Responsive web development
 - Environment variable management
 - Git and GitHub workflows
-- Deploying applications with Vercel
-- Debugging frontend issues
-
----
-
-## 🔮 Future Vision
-
-The goal is to continue improving this project by adding more advanced streaming-platform features, improving performance, enhancing the user experience, and introducing personalized recommendations and user-specific content.
+- Vercel deployment
+- API error handling
+- Frontend debugging
+- Managing application state
 
 ---
 
@@ -350,12 +426,12 @@ The goal is to continue improving this project by adding more advanced streaming
 
 **Frontend / Full Stack Developer**
 
-I enjoy building modern, responsive web applications and learning new technologies through real-world projects.
+I enjoy building modern, responsive web applications and learning new technologies by creating real-world projects.
 
 ### 🔗 Connect With Me
 
 - 🐙 **GitHub:** [github.com/lokeshkumar72](https://github.com/lokeshkumar72)
-- 💼 **LinkedIn:**[linkedin.com/lokesh-kumar-singh-] https://www.linkedin.com/in/lokesh-kumar-singh-
+- 💼 **LinkedIn:** [linkedin.com/in/lokesh-kumar-singh-](https://www.linkedin.com/in/lokesh-kumar-singh-/)
 
 ---
 
@@ -363,14 +439,16 @@ I enjoy building modern, responsive web applications and learning new technologi
 
 If you like this project, please consider giving it a ⭐ on GitHub.
 
-Your support is appreciated!
+Your support is greatly appreciated!
 
 ---
 
 ## 📄 Disclaimer
 
-This project is created **for educational and portfolio purposes only**.
+MovieFlix is an independent project created **for educational and portfolio purposes only**.
 
-Netflix is a registered trademark of Netflix, Inc. This project is not affiliated with, sponsored by, or endorsed by Netflix.
+This project is not affiliated with, sponsored by, or endorsed by Netflix.
 
-Movie and TV show data is provided through the TMDB API.
+Netflix is a registered trademark of Netflix, Inc.
+
+Movie and TV show information is provided through the TMDB API.
